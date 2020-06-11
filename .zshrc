@@ -19,7 +19,7 @@ parse_git_branch() {
 PROMPT='%F{blue}%(5~|…/%3~|%~) %f%# '
 RPROMPT='%B%F{blue}$(parse_git_branch)%f%b'
 
-# dotfile things. See .dotfile-scripts for more info
+# dotfile things. See .dotfiles.README.md for more info
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # Virtual environments
