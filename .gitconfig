@@ -1,3 +1,5 @@
 [user]
 	name = samshadwell
 	email = git@samshadwell.com
+[push]
+	default = current
