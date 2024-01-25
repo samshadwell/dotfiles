@@ -2,6 +2,11 @@
 eval `gdircolors ~/.dir_colors`
 alias ls='gls --color -h --group-directories-first'
 
+alias vim='nvim'
+
+# PATH manipulation
+export PATH="$PATH:$HOME/go/bin"
+
 # no beeping
 setopt nobeep
 
@@ -10,6 +15,9 @@ setopt append_history
 setopt extended_history
 setopt histignorealldups
 setopt histignorespace
+
+# store secrets outside of git
+source ~/.secrets
 
 # prompt config
 setopt PROMPT_SUBST
@@ -23,9 +31,7 @@ RPROMPT='%B%F{blue}$(parse_git_branch)%f%b'
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 # Virtual environments
-eval "$(nodenv init -)"
-eval "$(rbenv init -)"
+eval "$(/usr/local/bin/mise activate zsh)"
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
