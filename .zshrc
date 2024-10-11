@@ -1,3 +1,6 @@
+# Enable completion
+autoload -Uz compinit && compinit
+
 # ls colors
 eval `gdircolors ~/.dir_colors`
 alias ls='gls --color -h --group-directories-first'
