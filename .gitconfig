@@ -12,6 +12,7 @@
 [core]
   pager = delta
   editor = nvim
+  ignorecase = false
 [delta]
   navigate = true    # use n and N to move between diff sections
   light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
@@ -53,5 +54,12 @@
 [tag]
   sort = version:refname
 [user]
-  name = samshadwell
-  email = git@samshadwell.com
+  name = Samuel Shadwell
+  email = hi@samshadwell.com
+  signingkey = /Users/sam/.ssh/id_ed25519.pub
+[gpg]
+  format = ssh
+[commit]
+  gpgsign = true
+[gpg "ssh"]
+  allowedSignersFile = /Users/sam/.ssh/allowed_signers

@@ -33,8 +33,16 @@ RPROMPT='%B%F{blue}$(parse_git_branch)%f%b'
 # dotfile things. See .dotfiles.README.md for more info
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
-# Virtual environments
-eval "$(/usr/local/bin/mise activate zsh)"
+eval "$(/Users/sam/.local/bin/mise activate zsh)" # added by https://mise.run/zsh
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source /opt/local/share/fzf/shell/key-bindings.zsh
+source /opt/local/share/fzf/shell/completion.zsh
+
+. "$HOME/.local/bin/env"
+
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/sam/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
 
