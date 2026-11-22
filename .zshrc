@@ -21,7 +21,7 @@ setopt histignorealldups
 setopt histignorespace
 
 # store secrets outside of git
-source ~/.secrets
+[[ -f ~/.secrets] && source ~/.secrets
 
 # prompt config
 setopt PROMPT_SUBST

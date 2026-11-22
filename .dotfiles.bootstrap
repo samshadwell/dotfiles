@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+NVIM_REPO="git@github.com:samshadwell/kickstart.nvim.git"
+NVIM_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/nvim"
+SECRETS_FILE="$HOME/.secrets"
+
+# --- Secrets
+if [[ ! -e "$SECRETS_FILE" ]]; then
+  echo "Creating empty $SECRETS_FILE..."
+  install -m 600 /dev/null "$SECRETS_FILE"
+fi
+
+# --- Homebrew ---------------------------------------------------------------
+if ! command -v brew >/dev/null 2>&1; then
+  echo "Installing Homebrew..."
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+
+# Put brew on PATH for this session (Apple Silicon, Intel, Linux)
+for candidate in /opt/homebrew/bin/brew /usr/local/bin/brew /home/linuxbrew/.linuxbrew/bin/brew; do
+  if [[ -x "$candidate" ]]; then
+    eval "$("$candidate" shellenv)"
+    break
+  fi
+done
+
+echo "Installing Homebrew packages..."
+brew bundle --file="$DOTFILES_DIR/Brewfile"
+
+# --- Mise
+if ! command -v mise >/dev/null 2>&1; then
+  echo "Installing mise..."
+  curl -fsSL https://mise.run | sh
+fi
+
+# --- Neovim config ----------------------------------------------------------
+if [[ -d "$NVIM_DIR/.git" ]]; then
+  echo "Updating nvim config..."
+  git -C "$NVIM_DIR" pull --ff-only
+else
+  if [[ -e "$NVIM_DIR" ]]; then
+    backup="$NVIM_DIR.bak.$(date +%s)"
+    echo "Existing $NVIM_DIR is not a git repo, moving to $backup"
+    mv "$NVIM_DIR" "$backup"
+  fi
+  echo "Cloning nvim config..."
+  mkdir -p "$(dirname "$NVIM_DIR")"
+  git clone "$NVIM_REPO" "$NVIM_DIR"
+fi
+
+echo "Done."
