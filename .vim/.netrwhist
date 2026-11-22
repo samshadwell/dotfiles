@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =9
+let g:netrw_dirhist_9='/Users/sam/Code/split-ynab/githooks'
+let g:netrw_dirhist_8='/Users/sam/Code/split-ynab/storage'
+let g:netrw_dirhist_7='/Users/sam/Code/split-ynab/.git/hooks'
+let g:netrw_dirhist_6='/Users/sam/Desktop/rice-classes/Comp412/Lab2/out/production/Lab2/edu/rice/sls13'
+let g:netrw_dirhist_5='/Users/sam/Desktop/rice-classes/Comp412/Lab2/out/production/Lab2/edu/rice'
+let g:netrw_dirhist_4='/Users/sam/Desktop/rice-classes/Comp412/Lab2/out/production/Lab2/edu'
+let g:netrw_dirhist_3='/Users/sam/Desktop/rice-classes/Comp412/Lab2/out/production/Lab2'
+let g:netrw_dirhist_2='/Users/sam/Desktop/rice-classes/Comp412/Lab2/out/production'
+let g:netrw_dirhist_1='/Users/sam/Desktop/rice-classes/Comp412/Lab2/out'
