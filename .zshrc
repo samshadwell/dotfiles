@@ -36,10 +36,8 @@ alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 eval "$(/Users/sam/.local/bin/mise activate zsh)" # added by https://mise.run/zsh
 
-source /opt/local/share/fzf/shell/key-bindings.zsh
-source /opt/local/share/fzf/shell/completion.zsh
-
-. "$HOME/.local/bin/env"
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 
 # The following lines have been added by Docker Desktop to enable Docker CLI completions.
 fpath=(/Users/sam/.docker/completions $fpath)
