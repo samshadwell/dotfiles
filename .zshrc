@@ -6,6 +6,7 @@ eval `gdircolors ~/.dir_colors`
 alias ls='gls --color -h --group-directories-first'
 
 alias vim='nvim'
+alias ssh='ghostty +ssh --'
 
 # PATH manipulation
 export PATH="$PATH:$HOME/go/bin"
